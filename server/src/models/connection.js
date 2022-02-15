@@ -13,7 +13,6 @@ module.exports = async () => {
         MONGO_DB_URL,
         {
           useNewUrlParser: true,
-          useUnifiedTopology: true.valueOf,
         },
       )).db(DB_NAME);
     return connection;
