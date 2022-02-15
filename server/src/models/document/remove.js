@@ -4,7 +4,7 @@ const connection = require('../connection');
 module.exports = async (id) => {
   const result = await (await connection()).collection('list').deleteOne(
     {
-      "_id": ObjectId(id),
+      _id: ObjectId(id),
     },
   );
   return result;
