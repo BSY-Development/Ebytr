@@ -1,6 +1,9 @@
-module.exports = async (_req, res, next) => {
+const service = require('../../services/list/create');
+
+module.exports = async (req, res, next) => {
   try {
-    return res.status(200).send({ message: 'OK' });
+    const message = await service.createTask(req.body);
+    return res.status(201).send(message);
   } catch (err) {
     next(err); 
   }
