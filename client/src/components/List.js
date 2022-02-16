@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
+import '../Styles/list.css';
 
 import { io } from 'socket.io-client';
 
@@ -32,6 +33,7 @@ function List() {
       body: JSON.stringify(obj),
     });
     socket.emit('update');
+    setValue('');
   };
 
   if(!data.length) {
@@ -39,15 +41,21 @@ function List() {
   }
 
   return (
-    <div>
+    <div className='list-main'>
       <ul>
         { data.map((item, i) => <li key={ i } id={ item._id }>
           <Card content={ item } />
         </li>) }
       </ul>
-      <div>
-        <input type="text" value={ value } onChange={ (e) => setValue(e.target.value) } />
-        <button type="button" onClick={ handleClick }>Add</button>
+      <div className='create-div'>
+        <h2>Create new</h2>
+        <input
+          className='create-input'
+          type="text"
+          value={ value }
+          onChange={ (e) => setValue(e.target.value) }
+        />
+        <button type="button" className='btn-update' onClick={ handleClick }>Add</button>
       </div>
     </div>
   );

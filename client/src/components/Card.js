@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import '../Styles/card.css';
 
 import { io } from 'socket.io-client';
 
@@ -31,51 +33,65 @@ function Card({ content: {title, status, date, _id: id } }) {
 
   if (doUpdate) {
     return (
-      <div>
+      <div className='card-div'>
         <input type="text" value={ value } onChange={ (e) => setValue(e.target.value) } />
 
-        <input
-          type="radio"
-          id="pendente"
-          name="status"
-          value="Pendente"
-          onClick={ (e) => { setNewStatus(e.target.value) } }
-          defaultChecked={ status === 'Pendente' }
-        />
-        <label htmlFor="pendente">Pendente</label>
+        <div className='radio-style'>
+          <input
+            type="radio"
+            id="pendente"
+            name="status"
+            value="Pendente"
+            onClick={ (e) => { setNewStatus(e.target.value) } }
+            defaultChecked={ status === 'Pendente' }
+          />
+          <label htmlFor="pendente">Pendente</label>
+        </div>
 
-        <input
-          type="radio"
-          id="andamento"
-          name="status"
-          value="Em andamento"
-          onClick={ (e) => { setNewStatus(e.target.value) } }
-          defaultChecked={ status === 'Em andamento' }
-        />
-        <label htmlFor="andamento">Em andamento</label>
+        <div className='radio-style'>
+          <input
+            type="radio"
+            id="andamento"
+            name="status"
+            value="Em andamento"
+            onClick={ (e) => { setNewStatus(e.target.value) } }
+            defaultChecked={ status === 'Em andamento' }
+          />
+          <label htmlFor="andamento">Em andamento</label>
+        </div>
 
-        <input
-          type="radio"
-          id="pronto"
-          name="status"
-          value="Pronto"
-          onClick={ (e) => { setNewStatus(e.target.value) } }
-          defaultChecked={ status === 'Pronto' }
-        />
-        <label htmlFor="pronto">Pronto</label>
+        <div className='radio-style'>
+          <input
+            type="radio"
+            id="pronto"
+            name="status"
+            value="Pronto"
+            onClick={ (e) => { setNewStatus(e.target.value) } }
+            defaultChecked={ status === 'Pronto' }
+          />
+          <label htmlFor="pronto">Pronto</label>
+        </div>
 
-        <button type="button" onClick={ () => handleUpdate(id) }>Atualizar</button>
+        <button
+          className='btn-update'
+          type="button"
+          onClick={ () => handleUpdate(id) }
+        >
+          Atualizar
+        </button>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className='card-div'>
       <p>{ title }</p>
       <p>{ status }</p>
-      <p>{ date }</p>
-      <button type="button" onClick={ () => handleDelete(id) }>Deletar</button>
-      <button type="button" onClick={ () => setDoUpdate(true) }>Editar</button>
+      <p>{ moment(date).format('hh:mm DD/MM/YY') }</p>
+      <div className='button-div'>
+        <button type="button" onClick={ () => handleDelete(id) }>Deletar</button>
+        <button type="button" onClick={ () => setDoUpdate(true) }>Editar</button>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import List from './components/List';
 
@@ -7,7 +8,7 @@ function App() {
     <div>
       <Header />
       <List />
-      Content
+      <Footer />
     </div>
   );
 }

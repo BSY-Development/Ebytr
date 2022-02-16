@@ -1,0 +1,54 @@
+.card-div {
+  background-color: #0f0e17;
+  border-radius: 7px;
+  box-shadow: 10px 5px 5px black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  width: 200px;
+}
+
+.card-div p {
+  font-size: 17px;
+  font-weight: bolder;
+  margin-bottom: 4px;
+}
+
+button {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+  padding: 7px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-div button, .btn-update {
+  background-color: #ff8906;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bolder;
+  margin: 5px;
+  padding: 7%;
+}
+
+.button-div button:hover, .btn-update:hover {
+  background-color: #d17000;
+}
+
+.radio-style {
+  margin: 12px;
+}
