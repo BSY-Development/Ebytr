@@ -3,12 +3,14 @@ body {
 }
 
 .header-div {
-  background-color: #0f0e17;
-  margin: 0;
+  background-color: #0F0E17;
+  color: white;
+  padding: 2% 10%;
 }
 
 .header-div h1 {
   color: white;
+  font-size: 32px;
   margin: 0;
-  padding: 32px;
+  padding: 16px;
 }

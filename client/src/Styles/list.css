@@ -1,0 +1,23 @@
+.list-main {
+  min-height: 80vh;
+  margin: 2% auto;
+}
+
+.create-div {
+  background-color: #0f0e17;
+  border-radius: 5px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  position: fixed;
+  right: 0;
+}
+
+.create-div h2 {
+  color: white;
+}
+
+.create-input {
+  padding: 5%;
+}
