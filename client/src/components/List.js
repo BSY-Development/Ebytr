@@ -33,6 +33,7 @@ function List() {
       body: JSON.stringify(obj),
     });
     socket.emit('update');
+    setValue('');
   };
 
   if(!data.length) {

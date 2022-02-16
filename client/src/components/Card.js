@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import '../Styles/card.css';
 
 import { io } from 'socket.io-client';
@@ -86,7 +87,7 @@ function Card({ content: {title, status, date, _id: id } }) {
     <div className='card-div'>
       <p>{ title }</p>
       <p>{ status }</p>
-      <p>{ date }</p>
+      <p>{ moment(date).format('hh:mm DD/MM/YY') }</p>
       <div className='button-div'>
         <button type="button" onClick={ () => handleDelete(id) }>Deletar</button>
         <button type="button" onClick={ () => setDoUpdate(true) }>Editar</button>
