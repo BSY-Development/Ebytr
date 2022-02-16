@@ -21,3 +21,12 @@
 .create-input {
   padding: 5%;
 }
+
+.order-div {
+  text-align: center;
+}
+
+.order-div input, .order-div label {
+  cursor: pointer;
+}
+/* Push */
