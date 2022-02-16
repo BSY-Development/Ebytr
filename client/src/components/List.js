@@ -37,7 +37,7 @@ function List() {
     setValue('');
   };
 
-  const abc = (a, b) => {
+  const sortMethod = (a, b) => {
     if (a[sortBy] > b[sortBy]) return 1;
     if (b[sortBy] > a[sortBy]) return -1;
 
@@ -45,12 +45,26 @@ function List() {
   };
 
   if(!data.length) {
-    return <h1>Loading...</h1>;
+    return (
+      <div>
+        <h1>Loading...</h1>
+        <div className='create-div'>
+          <h2>Create new</h2>
+          <input
+            className='create-input'
+            type="text"
+            value={ value }
+            onChange={ (e) => setValue(e.target.value) }
+          />
+          <button type="button" className='btn-update' onClick={ handleClick }>Add</button>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className='list-main'>
-      <div>
+      <div className='order-div'>
         <h2>Order by:</h2>
         <input
           type="radio"
@@ -80,7 +94,7 @@ function List() {
         <label htmlFor="date">Date</label>
       </div>
       <ul>
-        { data.sort(abc).map((item, i) => <li key={ i } id={ item._id }>
+        { data.sort(sortMethod).map((item, i) => <li key={ i } id={ item._id }>
           <Card content={ item } />
         </li>) }
       </ul>
