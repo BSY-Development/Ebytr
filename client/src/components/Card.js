@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { io } from 'socket.io-client';
 
@@ -79,5 +79,14 @@ function Card({ content: {title, status, date, _id: id } }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  content: PropTypes.shape({
+    title: PropTypes.string,
+    status: PropTypes.string,
+    date: PropTypes.string,
+    _id: PropTypes.string,
+  }).isRequired,
+};
 
 export default Card;
