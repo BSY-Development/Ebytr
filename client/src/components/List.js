@@ -10,6 +10,7 @@ socket.emit('');
 function List() {
   const [data, setData] = useState([]);
   const [value, setValue] = useState('');
+  const [sortBy, setSortBy] = useState('date');
 
   useEffect(() => {
     const getData = async () => {
@@ -36,14 +37,50 @@ function List() {
     setValue('');
   };
 
+  const abc = (a, b) => {
+    if (a[sortBy] > b[sortBy]) return 1;
+    if (b[sortBy] > a[sortBy]) return -1;
+
+    return 0;
+  };
+
   if(!data.length) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <div className='list-main'>
+      <div>
+        <h2>Order by:</h2>
+        <input
+          type="radio"
+          id="title"
+          name="sort"
+          value="title"
+          onClick={ () => setSortBy('title') }
+        />
+        <label htmlFor="title">Title</label>
+
+        <input
+          type="radio"
+          id="status"
+          name="sort"
+          value="status"
+          onClick={ () => setSortBy('status') }
+        />
+        <label htmlFor="status">Status</label>
+
+        <input
+          type="radio"
+          id="date"
+          name="sort"
+          value="date"
+          onClick={ () => setSortBy('date') }
+        />
+        <label htmlFor="date">Date</label>
+      </div>
       <ul>
-        { data.map((item, i) => <li key={ i } id={ item._id }>
+        { data.sort(abc).map((item, i) => <li key={ i } id={ item._id }>
           <Card content={ item } />
         </li>) }
       </ul>
