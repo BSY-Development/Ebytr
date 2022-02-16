@@ -1,7 +1,12 @@
 import React from 'react';
+import '../Styles/header.css';
 
 function Header() {
-  return <h1>Header</h1>;
+  return (
+    <div className='header-div'>
+      <h1>Ebytr</h1>
+    </div>
+  );
 }
 
 export default Header;
