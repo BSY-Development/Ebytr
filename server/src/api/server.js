@@ -1,7 +1,5 @@
-const app = require('./app');
-const error = require('../middleware/error');
+const http = require('./app');
 
 const PORT = 3001;
 
-app.use(error);
-app.listen(PORT, () => console.log(`conectado na porta ${PORT}`));
+http.listen(PORT, () => console.log(`conectado na porta ${PORT}`));

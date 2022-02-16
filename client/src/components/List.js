@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3001');
+socket.emit('');
+
 function List() {
   const [data, setData] = useState([]);
   const [value, setValue] = useState('');
@@ -13,17 +18,20 @@ function List() {
     };
 
     getData();
+
+    socket.on('updateData', (content) => {
+      setData(content);
+    });
   }, []);
 
   const handleClick = async () => {
     const obj = { title: value, status: 'Pendente', date: new Date() };
-    const dataResult = await fetch('http://localhost:3001/list', {
+    await fetch('http://localhost:3001/list', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(obj),
     });
-    const response = await dataResult.json();
-    console.log(response);
+    socket.emit('update');
   };
 
   if(!data.length) {

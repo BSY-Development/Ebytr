@@ -1,31 +1,34 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3001');
+socket.emit('');
+
 function Card({ content: {title, status, date, _id: id } }) {
   const [doUpdate, setDoUpdate] = useState(false);
   const [value, setValue] = useState(title);
   const [newStatus, setNewStatus] = useState(status)
 
   const handleUpdate = async (id) => {
-    const dataResult = await fetch(`http://localhost:3001/list/${id}`, {
+    await fetch(`http://localhost:3001/list/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: value, status: newStatus }),
     });
-    const response = await dataResult.json();
-    console.log(response);
     setDoUpdate(false);
+    socket.emit('update');
   }
 
   const handleDelete = async (id) => {
-    const dataResult = await fetch(`http://localhost:3001/list/${id}`, {
+    await fetch(`http://localhost:3001/list/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     });
-    const response = await dataResult.json();
-    console.log(response);
+    socket.emit('update');
   }
-  // pendente, em andamento ou pronto
+
   if (doUpdate) {
     return (
       <div>
