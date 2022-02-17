@@ -5,7 +5,7 @@ const DB_NAME = 'ToDoList';
 
 let connection = null;
 
-module.exports = async () => {
+const conn = async () => {
   try {
     if (connection) return connection;
 
@@ -21,3 +21,5 @@ module.exports = async () => {
     process.exit(1);
   }
 };
+
+module.exports = { conn };
